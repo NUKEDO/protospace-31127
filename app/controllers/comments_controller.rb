@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
       # "/prototypes/#{@comment.prototype.id}" でも可
     else
       @prototype = @comment.prototype
-      @comments = Comment.all
+      @comments = @prototype.comments.includes(:user)
       render "prototypes/show"
     end
   end
